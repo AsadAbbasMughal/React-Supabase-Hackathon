@@ -102,8 +102,8 @@ const RejectedLoan = () => {
             }`}
           >
             <td className="px-4 py-3">{loan.id}</td>
-            <td className="px-4 py-3">{loan.name}</td>
-            <td className="px-4 py-3">{loan.amount}</td>
+            <td className="px-4 py-3">{loan.title}</td>
+            <td className="px-4 py-3">{loan.description}</td>
             <td className="px-4 py-3">{new Date(loan.date).toLocaleDateString()}</td>
             <td className="px-4 py-3">
               <span className="inline-block px-2 py-1 text-xs font-semibold text-red-700 bg-red-100 rounded-full">

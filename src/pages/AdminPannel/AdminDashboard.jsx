@@ -39,7 +39,7 @@ const AdminDashboard = () => {
     .reduce((sum, l) => sum + Number(l.amount || 0), 0);
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row">
+    <div className="min-h-screen flex flex-col lg:flex-row text-black">
       {/* Sidebar */}
       <aside className="w-full lg:w-64 bg-black text-white p-6">
         <h2 className="text-2xl font-bold mb-8 text-center">Admin Panel</h2>
@@ -124,7 +124,7 @@ const AdminDashboard = () => {
                   className="border-b last:border-none hover:bg-gray-50"
                 >
                   <td className="p-3">{i + 1}</td>
-                  <td className="p-3">Rs. {loan.amount}</td>
+                  <td className="p-3"> {loan.title}</td>
                   <td className="p-3">
                     <span
                       className={`inline-block px-2 py-1 rounded-full text-xs font-semibold ${
@@ -138,7 +138,7 @@ const AdminDashboard = () => {
                       {loan.status}
                     </span>
                   </td>
-                  <td className="p-3">{loan.reason || '—'}</td>
+                  <td className="p-3">{loan.description || '—'}</td>
                   <td className="p-3 space-x-2">
                     <button
                       onClick={() => handleStatusChange(loan.id, 'Approved')}

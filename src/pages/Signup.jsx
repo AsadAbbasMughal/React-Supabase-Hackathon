@@ -85,7 +85,7 @@ const Signup = () => {
           />
           <div className="absolute inset-0 bg-black opacity-40" />
           <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-2xl md:text-4xl z-10 px-4 text-center">
-            Welcome to<br />Loan Management System
+            Welcome to<br />Event Management System
           </div>
         </div>
 

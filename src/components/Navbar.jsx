@@ -27,7 +27,7 @@ const Navbar = () => {
             <li><a className="hover:text-white">Contact</a></li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl text-white">Easy Pesa</a>
+        <a className="btn btn-ghost normal-case text-xl text-white">Mini hackaton</a>
       </div>
 
       {/* Desktop Menu */}
@@ -40,9 +40,7 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className="navbar-end">
-        <a className="btn bg-white text-gray-900 hover:bg-gray-200">Login</a>
-      </div>
+      
     </div>
   );
 };

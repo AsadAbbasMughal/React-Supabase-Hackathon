@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -19,12 +20,12 @@ const Hero = () => {
           Build responsive, scalable, and beautiful web apps that delight your users and drive growth.
         </p>
         <div className="flex justify-center md:justify-start space-x-4">
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700 transition">
+          <Link to="/signup" className="bg-blue-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700 transition">
             Get Started
-          </button>
-          <button className="px-6 py-3 rounded-md font-semibold border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition">
-            Learn More
-          </button>
+          </Link>
+          <Link to={'/signin'} className="px-6 py-3 rounded-md font-semibold border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition">
+            Login
+          </Link>
         </div>
       </div>
 

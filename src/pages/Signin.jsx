@@ -23,18 +23,21 @@ const Signin = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const adminEmail = "admin@example.com";
+  // ✅ Updated admin credentials
+  const adminEmail = "admin@gmail.com";
   const adminPassword = "adminadmin";
 
   const onSubmit = async (data) => {
     const { email, password } = data;
 
+    // ✅ Admin login condition
     if (email === adminEmail && password === adminPassword) {
-      toast.success("Login Successful");
+      toast.success("Admin Login Successful");
       setTimeout(() => navigate('/admin-dashboard'), 1000);
       return;
     }
 
+    // ✅ Regular user login with Supabase
     const { data: userData, error } = await supabase.auth.signInWithPassword({ email, password });
 
     if (error) {
@@ -50,7 +53,7 @@ const Signin = () => {
   };
 
   return (
-    <div className="min-h-[100vh] flex justify-center items-center  to-emerald-500 pt-10 text-neutral-950 px-4">
+    <div className="min-h-[100vh] flex justify-center items-center pt-10 text-neutral-950 px-4">
       <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 bg-white rounded-lg shadow-lg overflow-hidden">
         
         {/* Left side image */}
@@ -62,7 +65,7 @@ const Signin = () => {
           />
           <div className="absolute inset-0 bg-black opacity-40"></div>
           <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-2xl md:text-4xl z-10 px-4 text-center">
-            Welcome Back <br /> Loan Management System
+            Welcome Back <br /> Event Management System
           </div>
         </div>
 

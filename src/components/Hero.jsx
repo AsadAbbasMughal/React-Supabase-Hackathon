@@ -32,7 +32,7 @@ const Hero = () => {
       {/* Right Image */}
       <div className="flex-1 mt-10 md:mt-0">
         <img
-          src="https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=800&q=80"
+          src="https://img.freepik.com/free-vector/security-system-background_23-2147626787.jpg"
           alt="Modern technology illustration"
           className="w-full max-w-lg mx-auto rounded-lg shadow-lg"
         />

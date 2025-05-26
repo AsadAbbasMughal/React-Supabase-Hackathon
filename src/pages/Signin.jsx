@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';  // <-- import useState
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,7 +8,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import supabase from '../lib/Db';
 
-// Yup schema
 const schema = yup.object().shape({
   email: yup.string().email('Invalid email address').required('Email is required'),
   password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
@@ -16,6 +15,7 @@ const schema = yup.object().shape({
 
 const Signin = () => {
   const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);  // <-- State to track button disable
 
   const {
     register,
@@ -23,25 +23,30 @@ const Signin = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  // ✅ Updated admin credentials
   const adminEmail = "admin@gmail.com";
   const adminPassword = "adminadmin";
 
   const onSubmit = async (data) => {
+    if (isSubmitting) return;  // Prevent double submission if somehow clicked again
+
+    setIsSubmitting(true);    // Disable button
+
     const { email, password } = data;
 
-    // ✅ Admin login condition
     if (email === adminEmail && password === adminPassword) {
       toast.success("Admin Login Successful");
-      setTimeout(() => navigate('/admin-dashboard'), 1000);
+      setTimeout(() => {
+        setIsSubmitting(false);
+        navigate('/admin-dashboard');
+      }, 1000);
       return;
     }
 
-    // ✅ Regular user login with Supabase
     const { data: userData, error } = await supabase.auth.signInWithPassword({ email, password });
 
     if (error) {
       toast.error("Signin Error: " + error.message);
+      setIsSubmitting(false);  // Enable button on error
       return;
     }
 
@@ -49,13 +54,15 @@ const Signin = () => {
       toast.success("Signin successful");
     }
 
-    setTimeout(() => navigate('/user-dashboard'), 1000);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      navigate('/user-dashboard');
+    }, 1000);
   };
 
   return (
-    <div className="min-h-[100vh] flex justify-center items-center pt-10 text-neutral-950 px-4">
+    <div className="min-h-[100vh] flex justify-center items-center pt-10 pb-6 text-neutral-950 px-4">
       <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 bg-white rounded-lg shadow-lg overflow-hidden">
-        
         {/* Left side image */}
         <div className="hidden md:block relative">
           <img
@@ -76,7 +83,6 @@ const Signin = () => {
             <p className="text-center text-gray-600 mb-6 text-sm">Access your dashboard</p>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-              {/* Email */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 flex items-center gap-2">
                   <FaEnvelope /> Email Address
@@ -90,7 +96,6 @@ const Signin = () => {
                 {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
               </div>
 
-              {/* Password */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 flex items-center gap-2">
                   <FaLock /> Password
@@ -104,16 +109,19 @@ const Signin = () => {
                 {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>}
               </div>
 
-              {/* Submit */}
               <button
                 type="submit"
-                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-lg font-medium text-sm shadow-md transition duration-300"
+                disabled={isSubmitting}  // <-- disable button when submitting
+                className={`w-full py-2.5 rounded-lg font-medium text-sm shadow-md transition duration-300 ${
+                  isSubmitting 
+                    ? "bg-gray-400 cursor-not-allowed" 
+                    : "bg-emerald-600 hover:bg-emerald-700 text-white"
+                }`}
               >
-                Login
+                {isSubmitting ? "Logging in..." : "Login"}
               </button>
             </form>
 
-            {/* Link to Signup */}
             <p className="text-xs text-center mt-5 text-gray-700">
               Don’t have an account?{' '}
               <Link to="/signup" className="text-emerald-600 font-semibold hover:underline">
@@ -123,7 +131,6 @@ const Signin = () => {
           </div>
         </div>
 
-        {/* Toast */}
         <ToastContainer position="top-center" autoClose={3000} />
       </div>
     </div>

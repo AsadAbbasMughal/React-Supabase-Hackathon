@@ -60,12 +60,7 @@ const ApprovedLoans = () => {
           >
             <XCircle size={20} /> Rejected
           </Link>
-          <Link
-            to="/disbursed"
-            className="flex items-center gap-3 hover:text-gray-300 transition"
-          >
-            <DollarSign size={20} /> Disbursed
-          </Link>
+        
         </nav>
       </aside>
 

@@ -73,7 +73,7 @@ const Signup = () => {
   });
 
   return (
-    <div className="min-h-[100vh] flex justify-center items-center pt-10 px-4">
+    <div className="min-h-[100vh] flex justify-center items-center pt-10 px-4 pb-10">
       <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 bg-white rounded-lg shadow-lg overflow-hidden">
         
         {/* Left Image */}

@@ -5,7 +5,6 @@ import {
   Clock,
   CheckCircle,
   XCircle,
-  DollarSign
 } from 'lucide-react';
 import supabase from '../../lib/Db';
 
@@ -32,11 +31,8 @@ const AdminDashboard = () => {
 
   const total = loanData.length;
   const approved = loanData.filter(l => l.status === 'Approved').length;
-  const pending  = loanData.filter(l => l.status === 'Pending').length;
+  const pending = loanData.filter(l => l.status === 'Pending').length;
   const rejected = loanData.filter(l => l.status === 'Rejected').length;
-  const disbursed = loanData
-    .filter(l => l.status === 'Approved')
-    .reduce((sum, l) => sum + Number(l.amount || 0), 0);
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row text-black">
@@ -68,12 +64,6 @@ const AdminDashboard = () => {
           >
             <XCircle size={20} /> Rejected
           </Link>
-          <Link
-            to="/disbursed"
-            className="flex items-center gap-3 hover:text-gray-300 transition"
-          >
-            <DollarSign size={20} /> Disbursed
-          </Link>
         </nav>
       </aside>
 
@@ -103,11 +93,9 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-      
-
         {/* Loan Table */}
         <div className="bg-white shadow rounded-lg overflow-x-auto">
-          <table className="min-w-full text-sm">
+          <table className="min-w-[600px] w-full text-sm">
             <thead className="bg-black text-white">
               <tr>
                 <th className="p-3">#</th>
@@ -124,7 +112,7 @@ const AdminDashboard = () => {
                   className="border-b last:border-none hover:bg-gray-50"
                 >
                   <td className="p-3">{i + 1}</td>
-                  <td className="p-3"> {loan.title}</td>
+                  <td className="p-3">{loan.title}</td>
                   <td className="p-3">
                     <span
                       className={`inline-block px-2 py-1 rounded-full text-xs font-semibold ${

@@ -16,6 +16,7 @@ import Footer from "./components/Footer.jsx";
 import UserDashboard from "./pages/UserDashboard.jsx";
 import Hero from "./components/Hero.jsx";
 import EventView from "./pages/EventView.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
@@ -37,6 +38,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/approved-loan" element={<Approved />} />
         <Route path="/pending" element={<PendingRequests />} />
        
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>

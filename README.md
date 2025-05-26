@@ -1,12 +1,58 @@
-# React + Vite
+# SMIT Paposh - Mini Hackathon  
+## Event Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Overview  
+A full-stack web app built with React and Supabase for creating and managing events with participant tracking. Features user authentication, image uploads, event approvals, and dashboards for admins and customers.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Tech Stack  
+- Frontend: React.js  
+- Backend: Supabase (Auth, Database, Storage)  
+- Styling: Tailwind CSS (or any preferred CSS framework)  
+- Deployment: Vercel / Netlify (Frontend), Supabase (Backend)  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### User Roles & Permissions  
+
+**Admin**  
+- View all events (pending, approved, rejected)  
+- Approve or reject event submissions  
+- View participants of approved events  
+- View all customers and their created events  
+- Update own profile  
+
+**Customer**  
+- Create events and submit for approval  
+- Edit only their pending events  
+- Add participants to approved events  
+- View their events  
+
+---
+
+### Core Features  
+- User signup/login with role-based access  
+- Event creation with image upload and category selection  
+- Admin approval workflow for events  
+- Participant management with duplicate prevention  
+- Responsive dashboards for customers and admins  
+
+---
+
+### Admin Credentials  
+- **Email:** admin@gmail.com  
+- **Password:** adminadmin  
+
+---
+
+### Deployment  
+- Frontend deployed on Vercel or Netlify  
+- Backend hosted on Supabase  
+
+---
+
+### Notes  
+- Focus on usability and responsiveness  
+- Proper error handling and feedback  
+- Tested thoroughly before submission  
